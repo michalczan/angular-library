@@ -1,0 +1,38 @@
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"><mat-icon>book_5</mat-icon></div>
+    <mat-card-title>{{ book.title }}</mat-card-title>
+  </mat-card-header>
+
+
+
+  <mat-card-content>
+    <div class="book-details">
+      <p><strong>Author:</strong> {{ book.author }}</p>
+      <p><strong>Genre:</strong> {{ book.genre }}</p>
+      <p><strong>Year:</strong> {{ book.year }}</p>
+
+      <div *ngIf="!book.available && inputText ">
+        <p><strong>Reserved for: </strong>{{ inputText }}</p>
+      </div>
+
+      <p *ngIf="book.available">Available!</p>
+
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+
+    <div *ngIf="book.available">
+      <section>
+        <input type="text" [(ngModel)]="inputText" placeholder="Enter name">
+        <div class="example-button-row">
+          <button mat-raised-button color="primary" (click)="reserve()">
+            <mat-icon>book</mat-icon>
+            Reserve
+          </button>
+        </div>
+      </section>
+    </div>
+  </mat-card-actions>
+</mat-card>
